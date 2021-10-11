@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SER-225-Game-master/SER-225-Game-master.iml" filepath="$PROJECT_DIR$/SER-225-Game-master/SER-225-Game-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hackstreetBoys.iml" filepath="$PROJECT_DIR$/hackstreetBoys.iml" />
+    </modules>
+  </component>
+</project>
