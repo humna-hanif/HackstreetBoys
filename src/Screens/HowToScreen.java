@@ -31,13 +31,13 @@ public class HowToScreen extends Screen{
         // setup graphics on screen (background map, spritefont text)
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
-        instructionsLabel = new SpriteFont("How To Play", 15, 35, "Times New Roman", 30, Color.red);
-        how1 = new SpriteFont("Move towards the goal! Hit gold box to complete level.", 150, 100, "Times New Roman", 22, Color.orange);
-        how2 = new SpriteFont("Use the left and right arrows or 'A' and 'D' keys to move.", 150, 130, "Times New Roman", 22, Color.yellow);
-        how3 = new SpriteFont("Jump with the up arrow or 'W' key.", 150, 160, "Times New Roman", 22, Color.green);
-        how4 = new SpriteFont("Crouch with the down arrow or 'S' key.", 150, 190, "Times New Roman", 22, Color.blue);
-        how5 = new SpriteFont("Avoid the enemies! Don't let them kill you!", 150, 220, "Times New Roman", 22, Color.magenta);
-        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu.", 20, 560, "Times New Roman", 30, Color.white);
+        instructionsLabel = new SpriteFont("How To Play", 260, 49, "Serif Bold", 50, Color.red);
+        how1 = new SpriteFont("Goal: Dodge the enemies to hit the gold box at the end to complete the level.", 100, 100, "Serif Bold", 18, Color.black);
+        how2 = new SpriteFont("Use arrow keys or 'A', 'W', 'S', 'D' keys to move avatar up, down, left, or right.", 100, 130, "Serif Bold", 18, Color.black);
+        how3 = new SpriteFont("Obstacles are outlined in red. Either jump or crouch to pass through.", 100, 160, "Serif Bold", 18, Color.black);
+        how4 = new SpriteFont("If avatar hits enemy a life is lost. You have 3 lives in total.", 100, 190, "Serif Bold", 18, Color.black);
+        how5 = new SpriteFont("When all lives are lost you can try again.", 100, 220, "Serif Bold", 18, Color.black);
+        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu.", 20, 560, "Times New Roman", 30, Color.black);
         keyLocker.lockKey(Key.SPACE);
     }
 

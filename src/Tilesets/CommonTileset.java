@@ -215,15 +215,7 @@ public class CommonTileset extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(greyRockTile);
-        
-        // obstacle sign
-        Frame textSignFrame = new FrameBuilder(getSubImage(3, 3), 0)
-        		.withScale(tileScale)
-        		.build();
-        
-        MapTileBuilder textSignTile = new MapTileBuilder(textSignFrame);
-        
-        mapTiles.add(textSignTile);
+  
         
         return mapTiles;
     }
