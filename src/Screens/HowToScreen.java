@@ -39,7 +39,7 @@ public class HowToScreen extends Screen{
         how3 = new SpriteFont("Obstacles are outlined in red. Either jump or crouch to pass through.", 100, 160, "Serif Bold", 18, Color.black);
         how4 = new SpriteFont("If avatar hits enemy a life is lost. You have 3 lives in total.", 100, 190, "Serif Bold", 18, Color.black);
         how5 = new SpriteFont("When all lives are lost you can try again.", 100, 220, "Serif Bold", 18, Color.black);
-        how6 = new SpriteFont("To pause hit the 'P' key.", 100, 220, "Serif Bold", 18, Color.black);
+        how6 = new SpriteFont("To pause hit the 'P' key.", 100, 250, "Serif Bold", 18, Color.black);
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu.", 20, 560, "Times New Roman", 30, Color.black);
         keyLocker.lockKey(Key.SPACE);
     }
@@ -65,6 +65,7 @@ public class HowToScreen extends Screen{
         how3.draw(graphicsHandler);
         how4.draw(graphicsHandler);
         how5.draw(graphicsHandler);
+        how6.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
       
     }
