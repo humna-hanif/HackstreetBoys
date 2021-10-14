@@ -28,6 +28,7 @@ public class MenuScreen extends Screen {
 
     public MenuScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
+        Mouse.setScreenCoordinator(screenCoordinator);
     }
 
     @Override
@@ -35,9 +36,15 @@ public class MenuScreen extends Screen {
     	playGame = new SpriteFont("PLAY GAME", 200, 120, "Comic Sans", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
+        
+        Mouse.setSpriteToClick(playGame, 1);
+        
         credits = new SpriteFont("CREDITS", 200, 200, "Comic Sans", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
+        
+        Mouse.setSpriteToClick(credits, 2);
+        
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
         keyTimer.setWaitTime(200);
@@ -48,9 +55,13 @@ public class MenuScreen extends Screen {
         howTo.setOutlineColor(Color.black);
         howTo.setOutlineThickness(3);
         
+        Mouse.setSpriteToClick(howTo, 3);
+        
         chooseAvatar = new SpriteFont("CHOOSE AN AVATAR", 200, 360, "Comic Sans", 30, new Color(49, 207, 240));
         chooseAvatar.setOutlineColor(Color.black);
         chooseAvatar.setOutlineThickness(3);
+        
+        Mouse.setSpriteToClick(chooseAvatar, 4);
         
         getInstructions = new SpriteFont("Press Space on any selected item.", 20, 560, "Times New Roman", 30, Color.white);
 

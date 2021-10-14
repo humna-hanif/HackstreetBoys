@@ -3,6 +3,7 @@ package Engine;
 import GameObject.ImageEffect;
 
 import java.awt.*;
+import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -14,6 +15,10 @@ public class GraphicsHandler {
     public void setGraphics(Graphics2D g) {
         this.g = g;
     }
+    
+    public FontRenderContext getFontRenderContext() {
+		return g.getFontRenderContext();
+	}
 
     public void drawImage(BufferedImage image, int x, int y) {
         g.drawImage(image, x, y, null);
@@ -99,4 +104,6 @@ public class GraphicsHandler {
         g.setStroke(originalStroke);
         g.setRenderingHints(originalHints);
     }
+
+	
 }

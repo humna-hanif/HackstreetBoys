@@ -4,6 +4,8 @@ import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 // This class represents a sprite font, which is graphic text (text drawn to the screen as if it were an image)
@@ -15,6 +17,7 @@ public class SpriteFont {
 	protected Color color;
 	protected Color outlineColor;
 	protected float outlineThickness = 1f;
+	protected FontRenderContext context;
 	
 	private  BufferedImage image;
 	
@@ -112,11 +115,29 @@ public class SpriteFont {
 	public void moveUp(float dy) {
 		y -= dy;
 	}
+	
+	Rectangle2D getBounds(String message) {
+		return font.getStringBounds(message, context);
+	}
+
+	public double getWidth(String message) {
+
+	    Rectangle2D bounds = getBounds(message);
+	    return bounds.getWidth();
+	  }
+
+	public double getHeight(String message) {
+
+	    Rectangle2D bounds = getBounds(message);
+	    return bounds.getHeight();
+	  }
 
 	public void draw(GraphicsHandler graphicsHandler) {
 		if (outlineColor != null && !outlineColor.equals(color)) {
+			context = graphicsHandler.getFontRenderContext();
 			graphicsHandler.drawStringWithOutline(text, Math.round(x), Math.round(y), font, color, outlineColor, outlineThickness);
 		} else {
+			context = graphicsHandler.getFontRenderContext();
 			graphicsHandler.drawString(text, Math.round(x), Math.round(y), font, color);
 		}
 	}
@@ -124,6 +145,7 @@ public class SpriteFont {
 	// this can be called instead of regular draw to have the text drop to the next line in graphics space on a new line character
 	public void drawWithParsedNewLines(GraphicsHandler graphicsHandler) {
 		int drawLocationY = Math.round(this.y);
+		context = graphicsHandler.getFontRenderContext();
 		for (String line: text.split("\n")) {
 			if (outlineColor != null && !outlineColor.equals(color)) {
 				graphicsHandler.drawStringWithOutline(line, Math.round(x), drawLocationY, font, color, outlineColor, outlineThickness);
