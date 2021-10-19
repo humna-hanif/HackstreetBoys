@@ -28,6 +28,8 @@ public class HowToScreen extends Screen{
         this.screenCoordinator = screenCoordinator;
     }
     
+    
+    //text for rules of game
     @Override
     public void initialize() {
         // setup graphics on screen (background map, spritefont text)
