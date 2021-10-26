@@ -296,6 +296,10 @@ public class GameObject extends AnimatedSprite {
 	public void setMap(Map map) {
 		this.map = map;
 	}
+	
+	public Map getCurrentMap() {
+		return this.map;
+	}
 
 	@Override
 	public void draw(GraphicsHandler graphicsHandler) {

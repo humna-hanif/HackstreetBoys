@@ -335,8 +335,8 @@ public abstract class Player extends GameObject {
 			setX(-16);
 		}
 		// prevents player from falling off the right side of the map tile
-		else if (levelState != LevelState.LEVEL_COMPLETED && getX() > 1578.890F) {
-			setX(1578.892F);
+		else if (levelState != LevelState.LEVEL_COMPLETED && getX() > (getCurrentMap().endBoundX - 53.109985F)) { 
+			setX(getCurrentMap().endBoundX - 53.108032F); // made it so the end bounds is exactly at the end of the screen
 		}
 	}
 
