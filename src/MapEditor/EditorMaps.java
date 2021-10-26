@@ -20,7 +20,6 @@ public class EditorMaps {
         switch(mapName) {
             case "TestMap":
                 return new TestMap();
-
             case "TestMap2":
                 return new TestMap2();
             case "TitleScreen":

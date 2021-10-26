@@ -26,6 +26,7 @@ public class TestMap2 extends Map {
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(48, 21), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
         return enemies;
     }
@@ -45,7 +46,7 @@ public class TestMap2 extends Map {
         ));
 
         enhancedMapTiles.add(new EndLevelBox(
-                getPositionByTileIndex(32, 7)
+                getPositionByTileIndex(52, 19)
         ));
 
         return enhancedMapTiles;
@@ -55,7 +56,7 @@ public class TestMap2 extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        npcs.add(new Walrus(getPositionByTileIndex(30, 10).subtract(new Point(0, 13)), this));
+        npcs.add(new Walrus(getPositionByTileIndex(12, 20).subtract(new Point(0, 13)), this));
 
         return npcs;
     }
