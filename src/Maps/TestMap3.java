@@ -25,9 +25,13 @@ public class TestMap3 extends Map {
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
-        enemies.add(new BugEnemy(getPositionByTileIndex(48, 21), Direction.LEFT));
-        enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(18, 20), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(20, 20), Direction.RIGHT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(34, 23), Direction.RIGHT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(35, 23), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(8, 22), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(50, 21), Direction.LEFT));
+        enemies.add(new DinosaurEnemy(getPositionByTileIndex(27, 21).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
         return enemies;
     }
 
