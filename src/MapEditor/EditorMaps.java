@@ -4,6 +4,7 @@ import Level.Map;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.TestMap2;
+import Maps.TestMap3;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class EditorMaps {
         return new ArrayList<String>() {{
             add("TestMap");
             add("TestMap2");
+            add("TestMap3");
             add("TitleScreen");
         }};
     }
@@ -22,6 +24,8 @@ public class EditorMaps {
                 return new TestMap();
             case "TestMap2":
                 return new TestMap2();
+            case "TestMap3":
+                return new TestMap3();
             case "TitleScreen":
                 return new TitleScreenMap();
             default:

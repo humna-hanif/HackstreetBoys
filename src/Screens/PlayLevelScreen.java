@@ -12,6 +12,8 @@ import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
 import Maps.TestMap2;
+import Maps.TestMap3;
+import Maps.TitleScreenMap;
 import Players.Cat;
 import Players.Dog;
 import Players.Ninja;
@@ -30,7 +32,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected LevelLoseScreen levelLoseScreen;
 	protected AvatarOptionsScreen avatar;
 	protected SpriteFont livesLabel;
+	
 	private boolean level1Completed = false;
+	private boolean level2Completed = false;
+	private boolean level3Completed = false;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -38,10 +43,18 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	
     public void initialize() {
         // define/setup map
-        if(level1Completed) {
+    	if (level3Completed) {
+    		this.map = new TestMap();
+    		level1Completed = false;
+    		level2Completed = false;
+    		level3Completed = false;
+            map.reset();
+    	} else if (level2Completed) {
+    		this.map = new TestMap3();
+            map.reset();
+    	} else if(level1Completed) {
            this.map = new TestMap2();
             map.reset();
-
         } else {
             this.map = new TestMap();
             map.reset();
@@ -101,7 +114,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			if (screenTimer.isTimeUp()) {
 				levelClearedScreen = null;
 				//goBackToMenu();
-				level1Completed = true;
+				if (level1Completed == false) {
+					level1Completed = true;
+				} else if (level2Completed == false) {
+					level2Completed = true;
+				} else if (level3Completed == false) {
+					level3Completed = true;
+				}
 				resetLevel();
 			}
 			break;
