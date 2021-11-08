@@ -61,7 +61,7 @@ public class AvatarOptionsScreen extends Screen{
           Avatar3 = new Sprite(ImageLoader.loadSubImage("Yoshi.png", new Color(157, 187, 97), 0, 0, 40, 40), 212, 240, 1.4F, ImageEffect.NONE);
           Avatar4 = new Sprite(ImageLoader.loadSubImage("Ninja.png", 0, 0, 220, 190), 208, 315, .33F, ImageEffect.NONE);
          
-          returnInstructionsLabel = new SpriteFont("Press SPACE to select Player. Press ESC to return to the menu.", 20, 560, "Times New Roman", 30, Color.YELLOW);
+          returnInstructionsLabel = new SpriteFont("Press SPACE to select Player. Press ESC to return to the menu.", 20, 560, "Serif Bold", 25, Color.white);
           keyLocker.lockKey(Key.SPACE);   
         
     }

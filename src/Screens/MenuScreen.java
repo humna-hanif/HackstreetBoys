@@ -63,7 +63,7 @@ public class MenuScreen extends Screen {
         
         Mouse.setSpriteToClick(chooseAvatar, 4);
         
-        getInstructions = new SpriteFont("Press Space on any selected item.", 20, 560, "Times New Roman", 30, Color.white);
+        getInstructions = new SpriteFont("Use Arrow Keys/Spacebar or Mouse to select an item.", 20, 560, "Comic Sans", 25, Color.white);
 
     }
 
