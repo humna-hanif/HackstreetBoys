@@ -1,4 +1,3 @@
-/.DS_Store
 /Builders/
 /Enemies/
 /Engine/
@@ -11,8 +10,5 @@
 /NPCs/
 /Players/
 /Screens/
-/SpriteFont/
 /Tilesets/
 /Utils/
-/meow.wav
-/win.wav
