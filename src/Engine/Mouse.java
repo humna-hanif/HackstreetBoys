@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 
 /*
@@ -21,6 +22,8 @@ public class Mouse {
 	private static SpriteFont chooseAvatar;
 	
 	private static ScreenCoordinator screenCoordinator;
+	
+	private static GamePanel gamePanel;
 	
 	private static final MouseListener mouseListener = new MouseListener() {
 
@@ -67,6 +70,25 @@ public class Mouse {
 				    //System.out.println("Clicked on the avatar choosing.");
 				    screenCoordinator.setGameState(GameState.CHOOSEAVATAR);
 				}
+			} else if (PlayLevelScreen.playLevelScreenRunning() == true) {
+				// gets mouse position on X and Y axis
+				int mousex = e.getX();
+				int mousey = e.getY();
+				
+				// This section gets the x and y location of pause/play button area
+				// NOTE: Reconfigure the locations if you change location of pause/play button 
+				// (I know this is inefficient but this worked within the time constraint we had)
+				int minxButton = 670;
+				int minyButton = 10;
+				
+				int maxxButton = (int) (705);
+				int maxyButton = (int) (32); 
+				
+				// If the mouse is within bounds of the pause/play button (the area of pause/play button) then switch pause state
+				if ((mousex >= minxButton && mousex <= maxxButton) && (mousey >= minyButton && mousey <= maxyButton)) {
+				    //System.out.println("Clicked on the play game.");
+					gamePanel.switchPauseState();
+				}
 			}
 		}
 
@@ -85,6 +107,11 @@ public class Mouse {
 
 	// prevents Mouse from being instantiated -- it's my way of making a "static" class like C# has
 	private Mouse() { }
+	
+	// sets the game panel to switch the pause states
+	public static void setGamePanel(GamePanel gPanel) {
+		gamePanel = gPanel;
+    }
 	
 	// sets the screen coordinator to get the game states
 	public static void setScreenCoordinator(ScreenCoordinator sCoordinator) {

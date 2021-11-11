@@ -1,14 +1,2 @@
-/Builders/
-/Enemies/
-/Engine/
-/EnhancedMapTiles/
-/Game/
-/GameObject/
-/Level/
 /MapEditor/
-/Maps/
-/NPCs/
-/Players/
-/Screens/
-/Tilesets/
-/Utils/
+/Engine/

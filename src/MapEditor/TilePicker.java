@@ -57,7 +57,10 @@ public class TilePicker extends JPanel {
         if (height == 0) {
             height = 1;
         }
-        setPreferredSize(new Dimension(Math.max(144, width * tileset.getScaledSpriteWidth()), Math.max(391, height * tileset.getScaledSpriteHeight())));
+        // NOTE: If you ever add more tiles and the added tiles are below the max height of the scroll bar, increase this value below
+        //Original Size before project was given to us: 391
+        int CurrentHeightBoundOfScrollBar = 550; // Changes the the bound of the scroll pane to have the viewport in the y axis
+        setPreferredSize(new Dimension(Math.max(144, width * tileset.getScaledSpriteWidth()), Math.max(CurrentHeightBoundOfScrollBar, height * tileset.getScaledSpriteHeight())));
 
         Integer[] tileKeys = mapTileBuilders.keySet().toArray(new Integer[mapTileBuilders.keySet().size()]);
         Arrays.sort(tileKeys);

@@ -41,7 +41,7 @@ public class GamePanel extends JPanel {
 	private boolean isGamePaused = false;
 	private SpriteFont pauseLabel, timerLabel;
 	private KeyLocker keyLocker = new KeyLocker();
-	private final Key pauseKey = Key.P;
+	private final Key pauseKey = Key.ESC;
 
 	/*
 	 * The JPanel and various important class instances are setup here
@@ -59,10 +59,13 @@ public class GamePanel extends JPanel {
 		graphicsHandler = new GraphicsHandler();
 
 		screenManager = new ScreenManager();
+		
+		Mouse.setGamePanel(this);
 
 		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Comic Sans", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
+		
 
 // label for the game timer
 		timerLabel = new SpriteFont(minutesPassed + ":" + secondsPassed, 720, 25, "Comic Sans", 24, Color.white);
@@ -105,12 +108,16 @@ public class GamePanel extends JPanel {
 	public ScreenManager getScreenManager() {
 		return screenManager;
 	}
+	
+	public void switchPauseState() {
+		this.isGamePaused = !isGamePaused;
+	}
 
 // only lets the game be paused if the game state is the level
 	public void update() {
 		if (screenCoordinator.getGameState() == GameState.LEVEL) {
 			if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
-				isGamePaused = !isGamePaused;
+				switchPauseState();
 				keyLocker.lockKey(pauseKey);
 			}
 		}
@@ -171,16 +178,21 @@ public class GamePanel extends JPanel {
 
 	public void draw() {
 		screenManager.draw(graphicsHandler);
-// draws the timer on the screen when it the play level screen is running 
+		// draws the timer on the screen when it the play level screen is running 
 		if (timerStart && PlayLevelScreen.playLevelScreenRunning()) {
 			timerLabel.draw(graphicsHandler);
 		}
 
-// if game is paused, draw pause gfx over Screen gfx
+		// if game is paused, draw pause gfx over Screen gfx
 		if (isGamePaused) {
-			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
 					new Color(0, 0, 0, 100));
+			pauseLabel.draw(graphicsHandler);
+			// Newly added images that represent pause and play
+			graphicsHandler.drawImage(ImageLoader.load("PlayButton.png"), 670, 0,43,43);
+			
+		} else if (PlayLevelScreen.playLevelScreenRunning()) {
+			graphicsHandler.drawImage(ImageLoader.load("PauseButton.png"), 670, 0,43,43);
 		}
 	}
 
