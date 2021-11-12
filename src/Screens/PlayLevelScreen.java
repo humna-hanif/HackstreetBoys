@@ -13,6 +13,7 @@ import Level.PlayerListener;
 import Maps.TestMap;
 import Maps.TestMap2;
 import Maps.TestMap3;
+import Maps.TestMap4;
 import Maps.TitleScreenMap;
 import Players.Cat;
 import Players.Dog;
@@ -36,6 +37,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	private boolean level1Completed = false;
 	private boolean level2Completed = false;
 	private boolean level3Completed = false;
+	private boolean level4Completed = false;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -43,11 +45,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	
     public void initialize() {
         // define/setup map
-    	if (level3Completed) {
+    	if (level4Completed) {
     		this.map = new TestMap();
     		level1Completed = false;
     		level2Completed = false;
     		level3Completed = false;
+    		level4Completed = false;
+            map.reset();
+    	} else if (level3Completed) {
+    		this.map = new TestMap4();
             map.reset();
     	} else if (level2Completed) {
     		this.map = new TestMap3();
@@ -120,7 +126,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					level2Completed = true;
 				} else if (level3Completed == false) {
 					level3Completed = true;
+				} else if (level4Completed == false) {
+					level4Completed = true;
 				}
+				
+				
 				resetLevel();
 			}
 			break;
