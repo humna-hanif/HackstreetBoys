@@ -19,13 +19,14 @@ public class TestMap2 extends Map {
     private BugEnemy SecondBug, ThirdBug;
 
     public TestMap2() {
-        super("test_map2.txt", new CommonTileset(), new Point(1, 11));
+        super("test_map2.txt", new CommonTileset(), new Point(1, 22));
     }
 
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
+        System.out.println(getPositionByTileIndex(6,9));
+        enemies.add(new BugEnemy(getPositionByTileIndex(16,16), Direction.LEFT));
         enemies.add(new BugEnemy(getPositionByTileIndex(48, 21), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
         return enemies;
@@ -35,7 +36,7 @@ public class TestMap2 extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        enhancedMapTiles.add(new HorizontalMovingPlatform(
+        /*enhancedMapTiles.add(new HorizontalMovingPlatform(
                 ImageLoader.load("GreenPlatform.png"),
                 getPositionByTileIndex(24, 6),
                 getPositionByTileIndex(27, 6),
@@ -43,7 +44,7 @@ public class TestMap2 extends Map {
                 3,
                 new Rectangle(0, 6,16,4),
                 Direction.RIGHT
-        ));
+        ));*/
 
         enhancedMapTiles.add(new EndLevelBox(
                 getPositionByTileIndex(52, 19)

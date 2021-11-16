@@ -19,7 +19,7 @@ public class TestMap4 extends Map {
     private BugEnemy SecondBug, ThirdBug;
 
     public TestMap4() {
-        super("test_map4.txt", new CommonTileset(), new Point(1, 11));
+        super("test_map4.txt", new CommonTileset(), new Point(1, 22));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class TestMap4 extends Map {
         enemies.add(new BugEnemy(getPositionByTileIndex(53, 21), Direction.LEFT));
         enemies.add(new BugEnemy(getPositionByTileIndex(54, 21), Direction.LEFT));
         
-        enemies.add(new DinosaurEnemy(getPositionByTileIndex(25, 11).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+        enemies.add(new DinosaurEnemy(getPositionByTileIndex(30,9).addY(2), getPositionByTileIndex(32,9).addY(2), Direction.RIGHT));
         return enemies;
     }
 
