@@ -14,6 +14,7 @@ import Maps.TestMap;
 import Maps.TestMap2;
 import Maps.TestMap3;
 import Maps.TestMap4;
+import Maps.TestMap5;
 import Maps.TitleScreenMap;
 import Players.Cat;
 import Players.Dog;
@@ -38,59 +39,61 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	private boolean level2Completed = false;
 	private boolean level3Completed = false;
 	private boolean level4Completed = false;
+	private boolean level5Completed = false;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
 	}
-	
-    public void initialize() {
-        // define/setup map
-    	if (level4Completed) {
-    		this.map = new TestMap();
-    		level1Completed = false;
-    		level2Completed = false;
-    		level3Completed = false;
-    		level4Completed = false;
-            map.reset();
-    	} else if (level3Completed) {
-    		this.map = new TestMap4();
-            map.reset();
-    	} else if (level2Completed) {
-    		this.map = new TestMap3();
-            map.reset();
-    	} else if(level1Completed) {
-           this.map = new TestMap2();
-            map.reset();
-        } else {
-            this.map = new TestMap();
-            map.reset();
-        }
-        Audio.playMusic("BGM.wav");
 
-        // setup player
-        if (avatar.chosenavatar == 0) {
-            this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.player.setMap(map);
-            this.player.addListener(this);
-            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-        }
-        else if (avatar.chosenavatar == 1) {
-            this.player = new Dog(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.player.setMap(map);
-            this.player.addListener(this);
-            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-        }
-        else if (avatar.chosenavatar == 2) {
-            this.player = new Yoshi(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.player.setMap(map);
-            this.player.addListener(this);
-            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-        }
-        else if (avatar.chosenavatar == 3) {
-            this.player = new Ninja(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+	public void initialize() {
+		// define/setup map
+		if (level5Completed) {
+			this.map = new TestMap();
+			level1Completed = false;
+			level2Completed = false;
+			level3Completed = false;
+			level4Completed = false;
+			level5Completed = false;
+			map.reset();
+		} else if (level4Completed) {
+			this.map = new TestMap5();
+			map.reset();
+		} else if (level3Completed) {
+			this.map = new TestMap4();
+			map.reset();
+		} else if (level2Completed) {
+			this.map = new TestMap3();
+			map.reset();
+		} else if (level1Completed) {
+			this.map = new TestMap2();
+			map.reset();
+		} else {
+			this.map = new TestMap();
+			map.reset();
+		}
+		Audio.playMusic("BGM.wav");
+
+		// setup player
+		if (avatar.chosenavatar == 0) {
+			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+		} else if (avatar.chosenavatar == 1) {
+			this.player = new Dog(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+		} else if (avatar.chosenavatar == 2) {
+			this.player = new Yoshi(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+		} else if (avatar.chosenavatar == 3) {
+			   this.player = new Ninja(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
             this.player.setMap(map);
             this.player.addListener(this);
             this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -128,6 +131,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					level3Completed = true;
 				} else if (level4Completed == false) {
 					level4Completed = true;
+				} else if (level5Completed == false) {
+					level5Completed = true;
 				}
 				
 				
