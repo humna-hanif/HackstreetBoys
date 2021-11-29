@@ -42,6 +42,7 @@ public class GamePanel extends JPanel {
 	private SpriteFont pauseLabel, timerLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.ESC;
+	private int fixedTimer = 120;
 
 	/*
 	 * The JPanel and various important class instances are setup here
@@ -138,6 +139,7 @@ public class GamePanel extends JPanel {
 
 			if (wasStarted) {
 				startTime = System.currentTimeMillis();
+				fixedTimer = 120 * 1000;
 				wasStarted = false;
 				timerStart = true;
 			}
@@ -146,24 +148,33 @@ public class GamePanel extends JPanel {
 				pauseTime = System.currentTimeMillis() - startTime - millisPassed;
 			} else {
 				millisPassed = System.currentTimeMillis() - startTime - pauseTime;
-				secondsPassed = (millisPassed / 1000);
-
-				if (secondsPassed >= 60) {
+				// secondsPassed = (millisPassed / 1000);
+				fixedTimer = (int) (fixedTimer - millisPassed);
+				secondsPassed = fixedTimer/1000;
+				if (secondsPassed < 0) {
+					secondsPassed = 0;
+				}
+				
+				/* if(secondsPassed >= 1) {
 					minutesPassed = minutesPassed + 1;
 					secondsPassed = 0;
-
 					startTime = System.currentTimeMillis();
-
 				}
+				*/
+				
 			}
 
 			String timerString;
 
-			if (secondsPassed < 10) {
+
+			/* if (secondsPassed < 10) {
 				timerString = minutesPassed + ":0" + secondsPassed;
 			} else {
 				timerString = minutesPassed + ":" + secondsPassed;
 			}
+			*/ 
+			timerString = Integer.toString((int) secondsPassed);
+			
 			timerLabel = new SpriteFont(timerString, 720, 25, "Comic Sans", 24, Color.white);
 			timerLabel.setOutlineColor(Color.black);
 			timerLabel.setOutlineThickness(2.0f);
