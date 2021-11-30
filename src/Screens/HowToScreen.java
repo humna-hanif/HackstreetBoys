@@ -20,6 +20,9 @@ public class HowToScreen extends Screen{
     protected SpriteFont how4;
     protected SpriteFont how5;
     protected SpriteFont how6;
+    protected SpriteFont how7;
+    protected SpriteFont how8;
+    protected SpriteFont how9;
 
     protected SpriteFont returnInstructionsLabel;
 
@@ -41,7 +44,10 @@ public class HowToScreen extends Screen{
         how3 = new SpriteFont("Obstacles are outlined in red. Either jump or crouch to pass through.", 100, 160, "Serif Bold", 18, Color.black);
         how4 = new SpriteFont("If avatar hits enemy a life is lost. You have 3 lives in total.", 100, 190, "Serif Bold", 18, Color.black);
         how5 = new SpriteFont("When all lives are lost you can try again.", 100, 220, "Serif Bold", 18, Color.black);
-        how6 = new SpriteFont("To pause hit the 'P' key.", 100, 250, "Serif Bold", 18, Color.black);
+        how6 = new SpriteFont("2 minutes are given to complete each level ", 100, 250, "Serif Bold", 18, Color.black);
+        how7 = new SpriteFont("Level will restart after 2 minutes ", 100, 280, "Serif Bold", 18, Color.black);
+        how8 = new SpriteFont("Press spacebar to interact with a walrus.", 100, 310, "Serif Bold", 18, Color.black);
+        how9 = new SpriteFont("To pause hit the 'esc' key.", 100, 340, "Serif Bold", 18, Color.black);
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu.", 20, 560, "Serif Bold", 25, Color.white);
         keyLocker.lockKey(Key.SPACE);
     }
@@ -68,6 +74,9 @@ public class HowToScreen extends Screen{
         how4.draw(graphicsHandler);
         how5.draw(graphicsHandler);
         how6.draw(graphicsHandler);
+        how7.draw(graphicsHandler);
+        how8.draw(graphicsHandler);
+        how9.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
       
     }
