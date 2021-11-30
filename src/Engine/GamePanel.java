@@ -169,7 +169,6 @@ public class GamePanel extends JPanel {
 			int sec = (int)currentTime % 60;
 		    int min = ((int)currentTime / 60)%60;
 			
-
 			 if (sec < 10) {
 				timerString = min + ":0" + sec;
 			} else {
