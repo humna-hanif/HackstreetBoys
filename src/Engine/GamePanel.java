@@ -70,15 +70,15 @@ public class GamePanel extends JPanel {
 		pauseLabel.setOutlineThickness(2.0f);
 		
 
-// label for the game timer
+		// label for the game timer
 		timerLabel = new SpriteFont(minutesPassed + ":" + secondsPassed, 720, 25, "Comic Sans", 24, Color.white);
 
-// Every timer "tick" will call the update method as well as tell the JPanel to
-// repaint
-// Remember that repaint "schedules" a paint rather than carries it out
-// immediately
-// If the game is really laggy/slow, I would consider upping the FPS in the
-// Config file.
+		// Every timer "tick" will call the update method as well as tell the JPanel to
+		// repaint
+		// Remember that repaint "schedules" a paint rather than carries it out
+		// immediately
+		// If the game is really laggy/slow, I would consider upping the FPS in the
+		// Config file.
 		timer = new Timer(1000 / Config.FPS, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				update();
@@ -145,7 +145,7 @@ public class GamePanel extends JPanel {
 				wasStarted = false;
 				timerStart = true;
 			}
-//keeps track of how long the game has been paused so it can subtract it from the game timer 
+			//keeps track of how long the game has been paused so it can subtract it from the game timer 
 			if (isGamePaused) {
 				pauseTime = System.currentTimeMillis() - startTime - millisPassed;
 			} else {
@@ -210,9 +210,9 @@ public class GamePanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-// every repaint call will schedule this method to be called
-// when called, it will setup the graphics handler and then call this class's
-// draw method
+		// every repaint call will schedule this method to be called
+		// when called, it will setup the graphics handler and then call this class's
+		// draw method
 		graphicsHandler.setGraphics((Graphics2D) g);
 		if (doPaint) {
 			draw();

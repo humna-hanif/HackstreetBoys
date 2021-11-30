@@ -247,6 +247,7 @@ public class GameObject extends AnimatedSprite {
 		}
 
 		// call this method which a game object subclass can override to listen for collision events and react accordingly
+		// maybe here check if it is water and send if water
 		onEndCollisionCheckY(hasCollided, direction);
 
 		// returns the amount actually moved -- this isn't really used by the game, but I have it here for debug purposes
