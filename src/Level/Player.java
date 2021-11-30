@@ -32,7 +32,7 @@ public abstract class Player extends GameObject {
 	protected Direction facingDirection;
 	protected AirGroundState airGroundState;
 	protected AirGroundState previousAirGroundState;
-	protected LevelState levelState;
+	protected static LevelState levelState;
 
 	// classes that listen to player events can be added to this list
 	protected ArrayList<PlayerListener> listeners = new ArrayList<>();
@@ -49,10 +49,12 @@ public abstract class Player extends GameObject {
 	protected Key D_KEY = Key.D;
 
 	// if true, player cannot be hurt by enemies (good for testing)
-	protected boolean isInvincible = false;
+	protected static boolean isInvincible = false;
+	protected static boolean playerDead = false;
 	
-	protected int numOfCollisions = 0;
+	protected static int numOfCollisions = 0;
 	protected static int numOfLives;
+	
 
 	protected boolean firstCollision;
 	protected long collisionStartTime, collisionTime, secondsPassed, millisPassed;
@@ -365,7 +367,7 @@ public abstract class Player extends GameObject {
 
 	// other entities can call this method to hurt the player
 	public void hurtPlayer(MapEntity mapEntity) {
-		if (!isInvincible) {
+		if (!isInvincible && levelState != LevelState.PLAYER_DEAD) {
 			if (firstCollision) {
 				collisionStartTime = System.currentTimeMillis();
 				firstCollision = false;
@@ -382,8 +384,18 @@ public abstract class Player extends GameObject {
 			}
 			// if map entity is an enemy, kill player on touch
 			if (mapEntity instanceof Enemy && numOfCollisions >= 3) {
+				
 				levelState = LevelState.PLAYER_DEAD;
 			}
+		}
+	}
+	
+	// instantly kill the player
+	public static void killPlayer() {
+		if (!isInvincible && levelState != LevelState.PLAYER_DEAD) {
+			numOfCollisions = 5;
+			numOfLives = 0;
+			levelState = LevelState.PLAYER_DEAD;
 		}
 	}
 

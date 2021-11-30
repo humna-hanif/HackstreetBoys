@@ -1,6 +1,8 @@
 package Engine;
 
 import GameObject.Rectangle;
+import Level.LevelState;
+import Level.Player;
 import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
@@ -31,7 +33,7 @@ public class GamePanel extends JPanel {
 	private Timer timer;
 
 // used to keep track of the time of game play for the game timer
-	private long startTime, millisPassed, secondsPassed, minutesPassed, pauseTime;
+	private long startTime, millisPassed, secondsPassed, minutesPassed, pauseTime, currentTime;
 	private boolean wasStarted, timerStart;
 
 // used to draw graphics to the panel
@@ -42,7 +44,7 @@ public class GamePanel extends JPanel {
 	private SpriteFont pauseLabel, timerLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.ESC;
-	private int fixedTimer = 120;
+	private long fixedTimer = 120;
 
 	/*
 	 * The JPanel and various important class instances are setup here
@@ -139,7 +141,7 @@ public class GamePanel extends JPanel {
 
 			if (wasStarted) {
 				startTime = System.currentTimeMillis();
-				fixedTimer = 120 * 1000;
+				fixedTimer = 120;
 				wasStarted = false;
 				timerStart = true;
 			}
@@ -149,31 +151,30 @@ public class GamePanel extends JPanel {
 			} else {
 				millisPassed = System.currentTimeMillis() - startTime - pauseTime;
 				// secondsPassed = (millisPassed / 1000);
-				fixedTimer = (int) (fixedTimer - millisPassed);
-				secondsPassed = fixedTimer/1000;
-				if (secondsPassed < 0) {
-					secondsPassed = 0;
+						
+				
+				secondsPassed = millisPassed/1000; // converts milliseconds to seconds
+				
+				currentTime = fixedTimer - secondsPassed; // gets fixed time minus the seconds passed for countdown
+				if (currentTime < 0) {
+					currentTime = 0;
+					Player.killPlayer();
 				}
 				
-				/* if(secondsPassed >= 1) {
-					minutesPassed = minutesPassed + 1;
-					secondsPassed = 0;
-					startTime = System.currentTimeMillis();
-				}
-				*/
 				
 			}
 
 			String timerString;
+			
+			int sec = (int)currentTime % 60;
+		    int min = ((int)currentTime / 60)%60;
+			
 
-
-			/* if (secondsPassed < 10) {
-				timerString = minutesPassed + ":0" + secondsPassed;
+			 if (sec < 10) {
+				timerString = min + ":0" + sec;
 			} else {
-				timerString = minutesPassed + ":" + secondsPassed;
+				timerString = min + ":" + sec;
 			}
-			*/ 
-			timerString = Integer.toString((int) secondsPassed);
 			
 			timerLabel = new SpriteFont(timerString, 720, 25, "Comic Sans", 24, Color.white);
 			timerLabel.setOutlineColor(Color.black);
