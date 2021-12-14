@@ -1,0 +1,37 @@
+---
+layout: default
+title: Mouse Detection
+parent: Game Engine
+nav_order: 3
+permalink: /GameEngine/mouse-detection
+---
+
+# Navigation Structure
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Mouse Detection
+
+## Mouse Input
+
+There is a `Mouse` class in the engine that handles detecting when a mouse is being used/clicked. The class is a "static" class (meaning it can't be instantiated) and exists
+solely to poll the global mouse state, which is generally used in `update` methods to be used to check if a mouse is currently being pressed or not. 
+Every class has the ability to detect mouse input and multiple classes can detect mouse input at the same time and react to it as desired.
+
+## Mouse Detection Methods
+The `Mouse` class supplies the following methods:
+- **mouseClicked** -- check if mouse is being clicked
+- **setGamePanel** -- calls current game panel so mouse class can use its method
+- **setScreenCoordinator** -- checks screen state to switch the game
+- **setSpriteToClick** -- determine which specific sprite is being clicked
+- **getMouseListener** -- returns mouse listener
+
+
+Since these methods are all static methods, they can be referenced directly from the `Mouse` type 

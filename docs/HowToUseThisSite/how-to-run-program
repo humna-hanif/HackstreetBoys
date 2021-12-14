@@ -1,0 +1,27 @@
+---
+layout: default
+title: How To Run Program
+nav_order: 2
+permalink: /HowToRunProgram
+search_exclude: true
+---
+
+# Navigation Structure
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# How To Run Program
+
+**Installation**
+1. Download Zip File: hackstreetBoys.zip OR clone GitHub Repository:  https://github.com/humna-hanif/hackstreetBoys.git
+
+**Run the Program**
+1. Import Project from File System onto an IDE (we recommend Eclipse).
+2. Run the src file as a Java Application
